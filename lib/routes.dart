@@ -3,6 +3,7 @@ import 'package:wifilockproject/main.dart';
 import 'package:wifilockproject/screens/HomePageScreen.dart';
 import 'package:wifilockproject/screens/SetPasswordScreen.dart';
 import 'package:wifilockproject/screens/SplashScreen.dart';
+import 'package:wifilockproject/screens/VirtualHotelScreen.dart';
 
 
 Map<String, WidgetBuilder> routes = {
@@ -10,5 +11,6 @@ Map<String, WidgetBuilder> routes = {
   SetPassword.routeName: (context) => SetPassword(),
   HomePage.routeName: (context) => HomePage(),
   SplashScreen.routeName: (context) => SplashScreen(),
+  VirtualHotel.routeName: (context)=> VirtualHotel(),
 
 };

@@ -59,8 +59,8 @@ class _SetPasswordState extends State<SetPassword> {
             children: [
               TextField(
                 controller: _kodController,
-                decoration: InputDecoration(
-                  labelText: 'Kapının Yeni Kodu',
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(13.0),),
+                  labelText: 'Kapının Yeni Kodu',fillColor:Colors.orangeAccent ,
                 ),
               ),
               SizedBox(height: 20),
@@ -70,7 +70,11 @@ class _SetPasswordState extends State<SetPassword> {
                   print("$kod");
                   _sendRequest(kod);
                 },
-                child: Text('Kapıyı Aç'),
+                child: Text('Şifreyi Değiştir'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0)),
+                ),
               ),
               SizedBox(height: 20),
               Text(

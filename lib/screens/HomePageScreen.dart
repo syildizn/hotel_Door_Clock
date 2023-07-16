@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wifilockproject/screens/SetPasswordScreen.dart';
+import 'package:wifilockproject/screens/VirtualHotelScreen.dart';
 
 class HomePage extends StatefulWidget {
-
   static String routeName = 'HomePageScreen';
 
   @override
@@ -80,29 +80,58 @@ class _HomePageState extends State<HomePage> {
             children: [
               TextField(
                 controller: _kodController,
-                decoration: InputDecoration(
-                  labelText: 'Kapı Kodu',
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(13.0),),
+                  labelText: 'Kapı Kod',fillColor:Colors.orangeAccent ,
                 ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  String kod = "LOG${_kodController.text}";
-                  print("$kod");
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, VirtualHotel.routeName);
+                    },
+                    child: Text("Sanal Otel"),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0)),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      String kod = "LOG${_kodController.text}";
+                      print("$kod");
 
-                  _sendRequest(kod);
-                },
-                child: Text('Kapıyı Aç'),
+                      _sendRequest(kod);
+                    },
+                    child: Text('Kapıyı Aç'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0)),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      String kodLock = "LCK";
+                      print(kodLock);
+                      _sendLock(kodLock);
+                    },
+                    child: Text('Kapıyı Kilitle'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0)),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  String kodLock = "LCK";
-                  print(kodLock);
-                  _sendLock(kodLock);
-                },
-                child: Text('Kapıyı Kilitle'),
-              ),
               SizedBox(height: 20),
               Text(
                 _feedbackMessage,
